@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  schedule:
+    - cron: "0 0 * * *"
+
+  workflow_dispatch:
+
+jobs:
+    compile:
+        name: Create deb package
+        runs-on: ubuntu-latest
+        steps:
+          - name: Maximize build space
+            uses: easimon/maximize-build-space@master
+          - name: Check out the repo
+            uses: actions/checkout@v2
+          - name: Run the build process with Docker
+            uses: addnab/docker-run-action@v3
+            with:
+                image: debian:stable
+                options: -v ${{ github.workspace }}:/root -v /output:/output
+                run: |
+                    set -ex
+                    cd /root
+                    sudo bash build.sh
+                    cp -prvf work/*.deb /output/
+
+          - uses: "marvinpinto/action-automatic-releases@latest"
+            with:
+                repo_token: "${{ secrets.GITHUB_TOKEN }}"
+                automatic_release_tag: "current"
+                prerelease: false
+                title: "Latest release"
+                files: |
+                  /output/*
+
