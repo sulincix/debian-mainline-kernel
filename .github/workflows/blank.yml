@@ -25,7 +25,7 @@ jobs:
                 run: |
                     set -ex
                     cd /root
-                    sudo bash build.sh
+                    bash build.sh
                     cp -prvf work/*.deb /output/
 
           - uses: "marvinpinto/action-automatic-releases@latest"
