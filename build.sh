@@ -2,6 +2,7 @@
 set -ex
 # check dependencies
 if [ "$UID" -eq 0 ] && command -v apt ; then
+    apt-get update
     apt-get install -yq build-essential linux-source bc \
         kmod cpio flex libncurses5-dev libelf-dev libssl-dev \
         dwarves bison debhelper-compat wget xz-utils
