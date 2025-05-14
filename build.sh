@@ -4,7 +4,7 @@ set -ex
 if [ $uid -eq 0 ] && command -v apt ; then
     apt-get install -yq build-essential linux-source bc \
         kmod cpio flex libncurses5-dev libelf-dev libssl-dev \
-        dwarves bison debhelper-compat
+        dwarves bison debhelper-compat wget xz
 fi
 ver="$1"
 if [ "$ver" == "" ] ; then
