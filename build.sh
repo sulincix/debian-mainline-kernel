@@ -16,7 +16,7 @@ mkdir -p work
 cd work
 # Fetch kernel
 if [ ! -d linux-${ver} ] ; then
-    wget -O - https://cdn.kernel.org/pub/linux/kernel/v${ver/.*/}.x/linux-${ver}.tar.xz | tar -xvJf -
+    wget -O - https://cdn.kernel.org/pub/linux/kernel/v${ver/.*/}.x/linux-${ver}.tar.xz | tar -xJf -
 fi
 # copy config
 if [ -f /proc/config.gz ] ; then
