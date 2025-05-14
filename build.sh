@@ -1,10 +1,10 @@
 #!/bin/bash
 set -ex
 # check dependencies
-if [ $uid -eq 0 ] && command -v apt ; then
+if [ "$UID" -eq 0 ] && command -v apt ; then
     apt-get install -yq build-essential linux-source bc \
         kmod cpio flex libncurses5-dev libelf-dev libssl-dev \
-        dwarves bison debhelper-compat wget xz
+        dwarves bison debhelper-compat wget xz-utils
 fi
 ver="$1"
 if [ "$ver" == "" ] ; then
