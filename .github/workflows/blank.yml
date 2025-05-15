@@ -15,6 +15,12 @@ jobs:
         steps:
           - name: Maximize build space
             uses: easimon/maximize-build-space@master
+            with:
+              remove-dotnet: false
+              remove-android: false
+              remove-haskell: false
+              remove-codeql: false
+              remove-docker-images: false
           - name: Check out the repo
             uses: actions/checkout@v2
           - name: Run the build process with Docker
