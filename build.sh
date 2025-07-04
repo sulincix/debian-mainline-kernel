@@ -50,4 +50,4 @@ done
 ./scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
 # build the deb package
 cd ..
-yes "" | makebindeb-pkg -C linux-${ver}  KDEB_PKGVERSION="" -j`nproc`
+yes "" | make bindeb-pkg -C linux-${ver}  KDEB_PKGVERSION="${ver}" -j`nproc`
