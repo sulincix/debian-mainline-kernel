@@ -27,6 +27,7 @@ else
     wget -O linux-${ver}/.config https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/config
 fi
 yes "" | make oldconfig -C linux-${ver}
+yes "" | make hardening.config -C linux-${ver}
 # configure
 cd linux-${ver}
 # disable hibernate
