@@ -24,7 +24,7 @@ if [ -f /proc/config.gz ] ; then
 elif [ -f /boot/config-$(uname -r) ] ; then
     cat /boot/config-$(uname -r) > linux-${ver}/.config
 else
-    wget -O linux-${ver}/.config https://gitlab.archlinux.org/archlinux/packaging/packages/linux-hardened/-/raw/main/config
+    wget -O linux-${ver}/.config https://gitlab.archlinux.org/archlinux/packaging/packages/linux-hardened/-/raw/main/config.x86_64
 fi
 yes "" | make oldconfig -C linux-${ver}
 yes "" | make hardening.config -C linux-${ver}
